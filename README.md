@@ -5,6 +5,7 @@
 1. nombre del alumno
 2. materia
 3. clasificación según la nota (Ver baremo)
+  
   Baremo:
   0-3: Muy deficiente
   3-5: Insuficiente
