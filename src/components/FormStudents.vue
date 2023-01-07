@@ -1,8 +1,21 @@
-<script setup>
-let students = [];
-function addStudent() {
-   this.students.push(this.newRow)
-   
+<script>
+export default{
+   data(){
+      return{
+         students:[
+            {
+               name:'Student-0', course :'English', score:10
+            }
+         ],
+         newRow:{}
+      }
+   },
+   methods: {
+      addStudent(){
+         this.students.push(this.newRow)
+         this.newRow = {}
+      }
+   },
 }
  </script>
 
