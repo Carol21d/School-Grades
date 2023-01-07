@@ -1,5 +1,5 @@
 ## MiniApp-School-Grades
-- El obejtivo de la actividad es crear una app donde un  profesor podrá agregar a una tabla las notas de sus alumnos, tambien podrá permitirle añadir el nombre del alumno, la materia y la nota en formato numérico.
+- El objetivo de la actividad es crear una app donde un  profesor podrá agregar a una tabla las notas de sus alumnos, tambien podrá permitirle añadir el nombre del alumno, la materia y la nota en formato numérico.
 
 - Columnas de la tabla:
 1. nombre del alumno
