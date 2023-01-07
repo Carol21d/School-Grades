@@ -7,12 +7,12 @@
 3. clasificación según la nota (Ver baremo)
   
   Baremo:
-  0-3: Muy deficiente
-  3-5: Insuficiente
-  5-6: Suficiente
-  6-7: Bien
-  7-9: Notable
-  9-10: Sobresaliente 
+  - 0-3: Muy deficiente
+  - 3-5: Insuficiente
+  - 5-6: Suficiente
+  - 6-7: Bien
+  - 7-9: Notable
+  - 9-10: Sobresaliente 
 
 ## Test Requirements (minimum):
 1. Testear si las etiquetas principales (header - main ...) están presentes en el componente
