@@ -1,10 +1,32 @@
-<script setup></script>
+<script setup>
+import {ref} from 'vue'
+
+
+const students = [];
+const studentAdded = ref({
+  name: '',
+  subject: '',
+  score: '',
+});
+
+function addStudent() {
+
+
+  
+}
+
+
+
+
+
+
+</script>
 <template>
   <div class="wrapper">
     <form @submit.prevent="addStudent()" class="wrapper__form">
-      <input type="text" placeholder="Name of Student" />
-      <input type="text" placeholder="Subject" />
-      <input type="number" placeholder="Score" />
+      <input type="text" placeholder="Name of Student" v-model="studentAdded.name" />
+      <input type="text" placeholder="Subject" v-model="studentAdded.subject" />
+      <input type="number" placeholder="Score" v-model="studentAdded.score" />
       <button type="submit">Add</button>
     </form>
 
@@ -17,7 +39,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="student in students">
+        <tr v-for="student in students" :key="student.id">
           <td>{{ student.name }}</td>
           <td>{{ student.subject }}</td>
           <td>{{ baremo(student.score) }}</td>
