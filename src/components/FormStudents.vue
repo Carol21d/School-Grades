@@ -1,16 +1,45 @@
 <script setup>
 import { ref } from "vue";
 
-const students = [];
-const studentAdded = ref({
-  name: "",
-  subject: "",
-  score: "",
+let students = ref([]);
+
+let studentAdded = ref({
+  name: '',
+  subject: '',
+  score:'',
 });
 
 function addStudent() {
-  students.value.push(studentAdded.value);
-  studentAdded.value = { name: "", subject: "", score: "" };
+  
+students.value.push(studentAdded.value);
+  studentAdded.value = { name: '', subject: '', score:  ''};
+}
+
+function baremoScore(score) {
+  if (score >= 0 && score < 3) {
+    return "Muy deficiente";
+  }
+  if (score >= 3 && score < 5) {
+    return "Insuficiente";
+  }
+
+  if (score >= 5 && score < 6) {
+    return "Suficiente";
+  }
+
+  if (score >= 6 && score < 7) {
+    return "Bien";
+  }
+
+  if (score >= 7 && score < 9) {
+    return "Notable";
+  }
+
+  if (score >= 9 && score <= 10) {
+    return "Sobresaliente";
+  }
+
+  return "La nota no esta en baremo";
 }
 </script>
 <template>
@@ -38,7 +67,7 @@ function addStudent() {
         <tr v-for="student in students" :key="student.id">
           <td>{{ student.name }}</td>
           <td>{{ student.subject }}</td>
-          <td>{{ baremo(student.score) }}</td>
+          <td>{{ baremoScore(student.score) }}</td>
         </tr>
       </tbody>
     </table>
