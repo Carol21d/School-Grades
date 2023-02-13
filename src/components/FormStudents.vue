@@ -7,6 +7,23 @@
       <input type="number" placeholder="Score" />
       <button type="submit">Add</button>
     </form>
+
+    <table class="wrapper__table">
+      <thead>
+        <tr>
+          <td>Student</td>
+          <td>Subject</td>
+          <td>Score</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="student in students">
+          <td>{{ student.name }}</td>
+          <td>{{ student.subject }}</td>
+          <td>{{ baremo(student.score) }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -37,7 +54,7 @@
         "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     }
 
-    button{
+    button {
       display: flex;
       margin-right: 1em;
     }
