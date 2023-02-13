@@ -4,7 +4,13 @@
 </script>
 <template>
   <div class="wrapper">
-    <form @onclick="addStudent()" class="wrapper__form">
+    <form @submit.prevent="addStudent()" class="wrapper__form">
+      <input type="text" placeholder="Name of Student">
+      <input type="text" placeholder="Subject">
+      <input type="number" placeholder="Score">
+      <button type="submit">Add</button>
+
+
     
     
     
