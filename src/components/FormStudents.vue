@@ -1,30 +1,26 @@
 <script setup>
-import {ref} from 'vue'
-
+import { ref } from "vue";
 
 const students = [];
 const studentAdded = ref({
-  name: '',
-  subject: '',
-  score: '',
+  name: "",
+  subject: "",
+  score: "",
 });
 
 function addStudent() {
-
-
-  
+  students.value.push(studentAdded.value);
+  studentAdded.value = { name: "", subject: "", score: "" };
 }
-
-
-
-
-
-
 </script>
 <template>
   <div class="wrapper">
     <form @submit.prevent="addStudent()" class="wrapper__form">
-      <input type="text" placeholder="Name of Student" v-model="studentAdded.name" />
+      <input
+        type="text"
+        placeholder="Name of Student"
+        v-model="studentAdded.name"
+      />
       <input type="text" placeholder="Subject" v-model="studentAdded.subject" />
       <input type="number" placeholder="Score" v-model="studentAdded.score" />
       <button type="submit">Add</button>
