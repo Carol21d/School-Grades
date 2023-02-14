@@ -2,28 +2,27 @@
 import { ref } from "vue";
 
 let students = ref([]);
-
 let studentAdded = ref({
-  name: '',
-  subject: '',
-  score:'',
+  name: "",
+  subject: "",
+  score: "",
 });
 
-function addStudent() {
-  
-students.value.push(studentAdded.value);
-  studentAdded.value = { name: '', subject: '', score:  ''};
+function AddStudent() {
+  students.value.push(studentAdded.value);
+  studentAdded.value = { name: "", subject: "", score: "" };
 }
 
 function baremoScore(score) {
   if (score >= 0 && score < 3) {
     return "Muy deficiente";
   }
+
   if (score >= 3 && score < 5) {
     return "Insuficiente";
   }
 
-  if (score >= 5 && score < 6) {
+  if ((score >= 5) & (score < 6)) {
     return "Suficiente";
   }
 
@@ -38,27 +37,21 @@ function baremoScore(score) {
   if (score >= 9 && score <= 10) {
     return "Sobresaliente";
   }
-
-  return "La nota no esta en baremo";
 }
 </script>
 <template>
   <div class="wrapper">
-    <form @submit.prevent="addStudent()" class="wrapper__form">
-      <input
-        type="text"
-        placeholder="Name of Student"
-        v-model="studentAdded.name"
-      />
+    <header><h1>School Grades</h1></header>
+    <form @submit.prevent="AddStudent" class="wrapper__form">
+      <input type="text" placeholder="Name" v-model="studentAdded.name" />
       <input type="text" placeholder="Subject" v-model="studentAdded.subject" />
       <input type="number" placeholder="Score" v-model="studentAdded.score" />
-      <button type="submit">Add</button>
+      <button type="submit">Add+</button>
     </form>
-
     <table class="wrapper__table">
       <thead>
-        <tr>
-          <td>Student</td>
+        <tr class="table__title">
+          <td>Name</td>
           <td>Subject</td>
           <td>Score</td>
         </tr>
@@ -104,6 +97,21 @@ function baremoScore(score) {
     button {
       display: flex;
       margin-right: 1em;
+    }
+  }
+
+  .wrapper__table {
+    display: flex;
+    flex-direction: column;
+    background-color: cadetblue;
+    height: auto 0;
+    width: auto 0;
+    margin: 2em;
+
+    .table__title {
+      font-size: 1.3em;
+      font-weight: 500;
+      font-family: Georgia, "Times New Roman", Times, serif;
     }
   }
 }
