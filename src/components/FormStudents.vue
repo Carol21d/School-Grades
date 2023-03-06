@@ -5,15 +5,22 @@ let students = ref([]);
 let studentAdded = ref({
   name: "",
   subject: "",
-  score: "",
+  score: ""
 });
 
 function AddStudent() {
+  // Verifica que ningun campo este vacio 
+  //arreglo de que imprima deficiente si dejo ciertos campos vacios
+  if(studentAdded.value.name.trim() === "" || studentAdded.value.subject.trim()==="" ||studentAdded.value.score.trim()){
+   return alert("Los campos no pueden estar vacios");
+  }
+
   students.value.push(studentAdded.value);
-  studentAdded.value = { name: "", subject: "", score: "" };
+  // studentAdded.value = { name: "", subject: "", score: "" };
 }
 
 function baremoScore(score) {
+ 
   if (score >= 0 && score < 3) {
     return "Muy deficiente";
   }
@@ -22,7 +29,7 @@ function baremoScore(score) {
     return "Insuficiente";
   }
 
-  if ((score >= 5) & (score < 6)) {
+  if (score >= 5 && score < 6) {
     return "Suficiente";
   }
 
@@ -36,6 +43,11 @@ function baremoScore(score) {
 
   if (score >= 9 && score <= 10) {
     return "Sobresaliente";
+  }
+
+  if (score >=11) {
+    return alert("nota erronea");
+    
   }
 }
 </script>
@@ -56,11 +68,11 @@ function baremoScore(score) {
           <td>Score</td>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="table__show">
         <tr v-for="student in students" :key="student.id">
-          <td>{{ student.name }}</td>
-          <td>{{ student.subject }}</td>
-          <td>{{ baremoScore(student.score) }}</td>
+          <td class="show__name">{{ student.name }}</td>
+          <td class="show__subject">{{ student.subject }}</td>
+          <td class="show__score">{{ baremoScore(student.score) }}</td>
         </tr>
       </tbody>
     </table>
@@ -73,7 +85,7 @@ function baremoScore(score) {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 90%;
+  width: 100%;
   height: 80%;
 
   .wrapper__form {
@@ -81,7 +93,7 @@ function baremoScore(score) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
+    background-color: rgb(43, 178, 137);
     width: auto 0;
     height: auto 0;
 
@@ -97,12 +109,17 @@ function baremoScore(score) {
     button {
       display: flex;
       margin-right: 1em;
+      padding: .5em;
+      border:none;
+      background-color:rgb(225, 95, 95);
+      color: white;
+      font-size: medium;
     }
   }
 
   .wrapper__table {
     display: flex;
-    flex-direction: column;
+
     background-color: cadetblue;
     height: auto 0;
     width: auto 0;
@@ -113,6 +130,14 @@ function baremoScore(score) {
       font-weight: 500;
       font-family: Georgia, "Times New Roman", Times, serif;
     }
+
+    .table__show{
+      display: flex;
+      td{
+        position: relative;
+
+      }
   }
+}
 }
 </style>
