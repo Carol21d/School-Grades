@@ -10,13 +10,13 @@ let studentAdded = ref({
 
 function AddStudent() {
   // Verifica que ningun campo este vacio 
-  //arreglo de que imprima deficiente si dejo ciertos campos vacios
-  if(studentAdded.value.name.trim() === "" || studentAdded.value.subject.trim()==="" ||studentAdded.value.score.trim()){
+  //arreglo  campos vacios
+  if(studentAdded.value.name.trim() === "" || studentAdded.value.subject.trim() === "" || isNaN(studentAdded.value.score)){
    return alert("Los campos no pueden estar vacios");
   }
 
   students.value.push(studentAdded.value);
-  // studentAdded.value = { name: "", subject: "", score: "" };
+  studentAdded.value = { name: "", subject: "", score: "" };
 }
 
 function baremoScore(score) {
@@ -61,8 +61,8 @@ function baremoScore(score) {
       <button type="submit">Add+</button>
     </form>
     <table class="wrapper__table">
-      <thead>
-        <tr class="table__title">
+      <thead class="table__title">
+        <tr>
           <td>Name</td>
           <td>Subject</td>
           <td>Score</td>
@@ -124,6 +124,10 @@ function baremoScore(score) {
     height: auto 0;
     width: auto 0;
     margin: 2em;
+
+    .table__title{
+      width: 100%;
+    }
 
     .table__title {
       font-size: 1.3em;
