@@ -5,14 +5,18 @@ let students = ref([]);
 let studentAdded = ref({
   name: "",
   subject: "",
-  score: ""
+  score: "",
 });
 
 function AddStudent() {
-  // Verifica que ningun campo este vacio 
+  // Verifica que ningun campo este vacio
   //arreglo  campos vacios
-  if(studentAdded.value.name.trim() === "" || studentAdded.value.subject.trim() === "" || isNaN(studentAdded.value.score)){
-   return alert("Los campos no pueden estar vacios");
+  if (
+    studentAdded.value.name.trim() === "" ||
+    studentAdded.value.subject.trim() === "" ||
+    isNaN(studentAdded.value.score)
+  ) {
+    return alert("Los campos no pueden estar vacios");
   }
 
   students.value.push(studentAdded.value);
@@ -20,7 +24,6 @@ function AddStudent() {
 }
 
 function baremoScore(score) {
- 
   if (score >= 0 && score < 3) {
     return "Muy deficiente";
   }
@@ -45,9 +48,8 @@ function baremoScore(score) {
     return "Sobresaliente";
   }
 
-  if (score >=11) {
+  if (score >= 11) {
     return alert("nota erronea");
-    
   }
 }
 </script>
@@ -70,9 +72,9 @@ function baremoScore(score) {
       </thead>
       <tbody class="table__show">
         <tr v-for="student in students" :key="student.id">
-          <td class="show__name">{{ student.name }}</td>
-          <td class="show__subject">{{ student.subject }}</td>
-          <td class="show__score">{{ baremoScore(student.score) }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.subject }}</td>
+          <td>{{ baremoScore(student.score) }}</td>
         </tr>
       </tbody>
     </table>
@@ -109,9 +111,9 @@ function baremoScore(score) {
     button {
       display: flex;
       margin-right: 1em;
-      padding: .5em;
-      border:none;
-      background-color:rgb(225, 95, 95);
+      padding: 0.5em;
+      border: none;
+      background-color: rgb(225, 95, 95);
       color: white;
       font-size: medium;
     }
@@ -119,29 +121,38 @@ function baremoScore(score) {
 
   .wrapper__table {
     display: flex;
-
+    justify-content: center;
     background-color: cadetblue;
-    height: auto 0;
-    width: auto 0;
+    width: 40%;
     margin: 2em;
-
-    .table__title{
-      width: 100%;
-    }
 
     .table__title {
       font-size: 1.3em;
       font-weight: 500;
       font-family: Georgia, "Times New Roman", Times, serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      tr {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+
+        justify-content: center;
+      }
     }
 
-    .table__show{
-      display: flex;
-      td{
-        position: relative;
-
+    .table__show {
+      font-size: 1.3em;
+      font-weight: 200;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      position: absolute;
+      margin: 1em;
+      tr {
+        gap: 20px;
       }
+    }
   }
-}
 }
 </style>
